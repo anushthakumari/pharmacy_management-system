@@ -170,7 +170,27 @@ window.onload=startclock;
 
               </li> 
 
+                <li style="color: #ffffff ;padding: 10px;"><font color="green" size="5">Profit:</font>
+                <strong><?php
 
+                  include("dbcon.php");
+
+                  $date = date("Y-m-d");
+
+                   $select_sql = "SELECT sum(total_profit) from sales where Date = '$date'";
+
+                  $select_query = mysqli_query($con, $select_sql);
+
+                    while($row = mysqli_fetch_array($select_query)){
+
+                      echo $row['sum(total_profit)'];
+                  }
+
+
+
+                ?></strong>
+
+              </li> 
                <li>
 
                

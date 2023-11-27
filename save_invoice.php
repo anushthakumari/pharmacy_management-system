@@ -196,8 +196,19 @@ if(isset($_POST['submit'])){
 
     if($update_stock_query){
 
-      $insert_transaction_sql = "INSERT INTO transactions (type, product_name, expire_date, qty, cost) values('sold','$med_name','$expire_date', $qty_on_hold, $amount)";
-      mysqli_query($con,$insert_transaction_sql);
+      $select_on_hold_q = mysqli_query($con,$select_on_hold);
+
+      while ($rw = mysqli_fetch_array($select_on_hold_q)) {
+        $m_name = $rw['medicine_name'];
+        $e_date = $rw['expire_date'];
+        $q_on_hold = $rw['qty'];
+        $amt = $rw['amount'];
+
+        $insert_transaction_sql = "INSERT INTO transactions (type, product_name, expire_date, qty, cost) values('sold','$m_name','$e_date', $q_on_hold, $amt)";
+        mysqli_query($con, $insert_transaction_sql);
+      }
+    
+
       echo "Hello woer";
     }else{
       echo "Sorry";
@@ -207,6 +218,7 @@ if(isset($_POST['submit'])){
     echo "slekfjs";
   }
   $new_invoice_number  = "RS-".$pdf->invoice_number();
+  print($new_invoice_number);
   header("location:home.php?invoice_number=$new_invoice_number");
 }
 

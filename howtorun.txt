@@ -1,0 +1,19 @@
+download xampp control panel : 
+https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.1.25/xampp-windows-x64-8.1.25-0-VS16-installer.exe/download
+
+
+extract the zip folder to c:/xampp/htdocs/
+
+open xampp control panel
+start the apache server
+start the mysql server
+
+open phpmyadmin by visiting: http://localhost/phpmyadmin/
+
+create a database name: pharmacy
+
+import the 'pharmacy.sql' file in the database
+
+vist this url:  http://localhost/[name of the extracted folder]/
+
+your project is up and running ;)
